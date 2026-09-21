@@ -39,7 +39,7 @@ private final Long id;
  @Override
  public Collection<? extends GrantedAuthority> getAuthorities() {
  return List.of(
- new SimpleGrantedAuthority(role)
+		new SimpleGrantedAuthority("ROLE_" + role)
  );
  }
  @Override

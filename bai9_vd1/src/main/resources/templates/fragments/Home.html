@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{Layouts/layout :: head('Trang chủ')}"></head>
 <body><header th:replace="~{fragments/header :: header}"></header>
-<main class="container home-hero"><span class="eyebrow">DASHBOARD</span><h1>Xin chào <span th:text="${#authentication.principal.fullName}">Duong Minh Phuoc_24162098</span>.</h1><p>Chúc bạn một ngày làm việc hiệu quả tại IOTSTAR SHOP.</p><div class="hero-line"><span></span><span></span><span></span></div></main>
+<main class="container home-hero"><span class="eyebrow">DASHBOARD</span><h1 sec:authorize="isAuthenticated()">Xin chào <span th:text="${#authentication.principal.fullName}">Duong Minh Phuoc_24162098</span>.</h1><h1 sec:authorize="isAnonymous()">Chào mừng bạn đến IOTSTAR SHOP.</h1><p>Chúc bạn một ngày làm việc hiệu quả tại IOTSTAR SHOP.</p><div class="hero-line"><span></span><span></span><span></span></div></main>
 </body></html>
