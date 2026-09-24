@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header">
+    <nav>
+        <a th:href="@{/}">IOTSTAR SHOP</a>
+        <span th:if="${#authorization.expression('isAuthenticated()')}">
+            <strong th:text="${#authentication.principal.fullName}">User</strong>
+            <span th:text="' [' + #authentication.principal.email + '] '">email</span>
+            <span th:text="${#authentication.principal.role}">USER</span>
+            <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/admin}">Admin</a>
+            <a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/users}">Users</a>
+            <a th:href="@{/products}">Products</a>
+            <form th:action="@{/logout}" method="post" style="display:inline">
+                <button type="submit">Đăng xuất</button>
+            </form>
+        </span>
+        <a th:unless="${#authorization.expression('isAuthenticated()')}" th:href="@{/login}">Đăng nhập</a>
+        <a th:unless="${#authorization.expression('isAuthenticated()')}" th:href="@{/register}">Đăng ký</a>
+    </nav>
+</header>
+</body>
+</html>

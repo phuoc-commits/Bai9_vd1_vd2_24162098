@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title ?: 'Login demo'}">Login demo</title>
+</head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main th:insert="~{::content}"></main>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Dashboard</title><link rel="stylesheet" th:href="@{/css/app.css}"></head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main>
+    <h1>Dashboard</h1>
+    <div class="cards"><div class="card"><strong th:text="${userCount}">0</strong><span>Total Users</span></div><div class="card"><strong th:text="${productCount}">0</strong><span>Total Products</span></div></div>
+    <p><a class="button" th:href="@{/products}">Quản lý Products</a><a class="button" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/users}">Quản lý Users</a></p>
+    <p th:if="${#authorization.expression('isAuthenticated()')}">
+        Xin chào <strong th:text="${#authentication.principal.fullName}">User</strong>.
+    </p>
+    <p th:unless="${#authorization.expression('isAuthenticated()')}">Hãy đăng nhập để xem thông tin tài khoản.</p>
+</main>
+</body>
+</html>
